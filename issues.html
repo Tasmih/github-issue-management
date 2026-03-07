@@ -42,9 +42,60 @@
  <!--All buttons here-->
  <div id="buttons " class="w-11/12 mx-auto p-3 bg-white shadow-xl flex gap-2 items-center mt-3">
     <button onclick="toggleStyle('all-filter-btn')" id="all-filter-btn" class="px-3 py-2 bg-[#3b82f6] text-white rounded-md w-[80px]">All</button>
-     <button onclick="toggleStyle('all-filter-btn')" id="all-filter-btn" class="px-3 py-2 bg-[#e4e4e7] text-[#64748b] rounded-md w-[80px]">Open</button>
-      <button onclick="toggleStyle('all-filter-btn')" id="all-filter-btn" class="px-3 py-2 bg-[#e4e4e7] text-[#64748b] rounded-md w-[80px]">Closed</button>
+     <button onclick="toggleStyle('open-filter-btn')" id="all-filter-btn" class="px-3 py-2 bg-[#e4e4e7] text-[#64748b] rounded-md w-[80px]">Open</button>
+      <button onclick="toggleStyle('close-filter-btn')" id="all-filter-btn" class="px-3 py-2 bg-[#e4e4e7] text-[#64748b] rounded-md w-[80px]">Closed</button>
  </div>
+
+  <!--Mainsection-->
+ <main class="w-11/12 mx-auto p-3 bg-white shadow-sm mt-3">
+    <div class="flex justify-between shadow-xl border-b border-b-gray-300 ">
+        <div class="left flex gap-2 items-center">
+            <div class=" ">
+                <img src="./assets/Aperture.png" alt="">
+            </div>
+            <div>
+                <h3 class="text-[20px] font-semibold text-[#1f2937]">50 Issues</h3>
+                <p class="text-[#64748b] text-[16px]">Track and manage your project issues</p>
+            </div>
+        </div>
+        <div class="right flex gap-2">
+            <div class="flex items-center"><img src="./assets/Open-Status.png" alt="">
+                <p>Open</p>
+            </div>
+            <div class="flex items-center"><img src="./assets/Closed- Status .png" alt="">
+                <p>Closed</p>
+            </div>
+        </div>
+    </div>
+     <!--card div-->
+    <div id="cardsContainer" class="card card-body shadow-2xl grid grid-cols-4 gap-2 bg-[#fbfbfb]">
+        <div id="card" class="space-y-3 p-3 shadow-sm">
+        <div class="flex justify-between">
+            <img src="./assets/Open-Status.png" alt="">
+            <!--badge-->
+            <div class="badge badge-soft badge-secondary">HIGH</div>
+        </div>
+        <h3 class="text-[#1f2937] font-semibold text-[14px]">Fix navigation menu on mobile devices</h3>
+        <p class="text-[#64748b] text-[12px]">The navigation menu doesn't collapse properly on mobile devices...</p>  
+        <!--2 badge-->
+        <div class=" flex gap-4">
+            <div class="badge badge-soft badge-secondary"><img src="./assets/BugDroid.png" alt=""> BUG</div>
+            <div class="badge badge-soft badge-warning text-[12px]"><img src="./assets/Lifebuoy.png" alt=""> HELP WANTED</div>   
+        </div>
+        
+        <div class="mt-4 w-full  border-t border-t-gray-200 pt-2">
+            <p class="text-[12px] text-[#64748b]">#1by john_doe</p>
+             <p class="text-[12px] text-[#64748b]">1/15/2024</p>
+            </div>
+
+
+
+
+        </div>
+    </div>
+ </main>
+
+    
     
 </body>
 </html>
