@@ -21,18 +21,18 @@
  <header>
     <nav class="">
         <div class="flex items-center justify-between w-11/12 mx-auto p-2 ">
-            <div class="logo flex items-center gap-2"><img class="w-9 " src="./assets/github-logo.png" 
+            <div class="logo flex items-center gap-2"><img class="w-9" src="./assets/github-logo.png" 
             alt="">
             <h2>GitHub Issues Tracker</h2>
         </div>
             <div class="search">
                 <div class="join">
-    <div class=>
+    <div>
     <label class="input validator join-item">
      
       <input type="email" placeholder="Search Issue" required />
     </label>
-    <div class="validator-hint hidden">Enter valid email address</div>
+    <div class="validator-hint hidden">Search</div>
   </div>
   <button class="btn btn-primary join-item">+ New Issue</button>
 </div></div>
@@ -40,11 +40,11 @@
     </nav>
  </header>
  <!--All buttons here-->
- <div id="buttons " class="w-11/12 mx-auto p-3 bg-white shadow-xl flex gap-2 items-center mt-3">
-    <button onclick="toggleStyle('all-filter-btn')" id="all-filter-btn" class="px-3 py-2 bg-[#3b82f6] text-white rounded-md w-[80px]">All</button>
-     <button onclick="toggleStyle('open-filter-btn')" id="all-filter-btn" class="px-3 py-2 bg-[#e4e4e7] text-[#64748b] rounded-md w-[80px]">Open</button>
-      <button onclick="toggleStyle('close-filter-btn')" id="all-filter-btn" class="px-3 py-2 bg-[#e4e4e7] text-[#64748b] rounded-md w-[80px]">Closed</button>
- </div>
+ <div id="buttons" class="w-11/12 mx-auto p-3 bg-white shadow-xl flex gap-2 items-center mt-3">
+    <button id="allBtn" class="px-3 py-2 bg-[#3b82f6] text-white rounded-md w-[80px]">All</button>
+    <button id="openBtn" class="px-3 py-2 bg-[#e4e4e7] text-[#64748b] rounded-md w-[80px]">Open</button>
+    <button id="closeBtn" class="px-3 py-2 bg-[#e4e4e7] text-[#64748b] rounded-md w-[80px]">Closed</button>
+</div>
 
   <!--Mainsection-->
  <main class="w-11/12 mx-auto p-3 bg-white shadow-sm mt-3">
@@ -54,7 +54,7 @@
                 <img src="./assets/Aperture.png" alt="">
             </div>
             <div>
-                <h3 class="text-[20px] font-semibold text-[#1f2937]">50 Issues</h3>
+                <h3 id="textCount" class="text-[20px] font-semibold text-[#1f2937]">50 Issues</h3>
                 <p class="text-[#64748b] text-[16px]">Track and manage your project issues</p>
             </div>
         </div>
@@ -62,40 +62,35 @@
             <div class="flex items-center"><img src="./assets/Open-Status.png" alt="">
                 <p>Open</p>
             </div>
-            <div class="flex items-center"><img src="./assets/Closed- Status .png" alt="">
+            <div class="flex items-center"><img src="./assets/Closed-Status.png" alt="">
                 <p>Closed</p>
             </div>
         </div>
     </div>
+    
      <!--card div-->
-    <div id="cardsContainer" class="card card-body shadow-2xl grid grid-cols-4 gap-2 bg-[#fbfbfb]">
-        <div id="card" class="space-y-3 p-3 shadow-sm">
-        <div class="flex justify-between">
-            <img src="./assets/Open-Status.png" alt="">
-            <!--badge-->
-            <div class="badge badge-soft badge-secondary">HIGH</div>
-        </div>
-        <h3 class="text-[#1f2937] font-semibold text-[14px]">Fix navigation menu on mobile devices</h3>
-        <p class="text-[#64748b] text-[12px]">The navigation menu doesn't collapse properly on mobile devices...</p>  
-        <!--2 badge-->
-        <div class=" flex gap-4">
-            <div class="badge badge-soft badge-secondary"><img src="./assets/BugDroid.png" alt=""> BUG</div>
-            <div class="badge badge-soft badge-warning text-[12px]"><img src="./assets/Lifebuoy.png" alt=""> HELP WANTED</div>   
-        </div>
-        
-        <div class="mt-4 w-full  border-t border-t-gray-200 pt-2">
-            <p class="text-[12px] text-[#64748b]">#1by john_doe</p>
-             <p class="text-[12px] text-[#64748b]">1/15/2024</p>
-            </div>
-
-
-
-
-        </div>
+    <div id="cardsContainer" class="card card-body shadow-2xl  grid grid-cols-4 gap-2 bg-[#fbfbfb]">
+       
     </div>
  </main>
 
+  <!-- Open the modal using ID.showModal() method -->
+  <!--<button class="btn" onclick="my_modal_5.showModal()">open modal</button>-->
+
+<dialog id="card_modal" class="modal modal-bottom sm:modal-middle">
+  <div class="modal-box">
+   <div id="detailsContainer"></div>
+    <div class="modal-action">
+      <form method="dialog">
+        <!-- if there is a button in form, it will close the modal -->
+        <button class="btn">Close</button>
+      </form>
+    </div>
+  </div>
+</dialog>
+
+
     
-    
+ <script src="./script/issues.js"></script>   
 </body>
 </html>
