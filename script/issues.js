@@ -60,7 +60,7 @@ const loadCardDetail =async(id)=>{
 const displayCardDetail =(card)=>{
 //console.log(card);
 const borderColor = card.status.toLowerCase() === "open" ? "border-green-500" : "border-purple-500";
-const statusImage = card.status.toLowerCase() === "open"? "./assets/Open-Status.png": "./assets/Closed-Status .png";
+const statusImage = card.status.toLowerCase() === "open"? "./assets/Open-Status.png": "./assets/Closed-Status.png";
 const detailsDiv = document.getElementById("detailsContainer");
 
 detailsDiv.innerHTML =` 
@@ -100,7 +100,7 @@ const displayCards =(cards)=>{
     for (let card of cards){
         const borderColor = card.status.toLowerCase() === "open" ? "border-green-500" : "border-purple-500";
         //  Image based on status
-        const statusImage = card.status.toLowerCase() === "open" ? "./assets/Open-Status.png" : "./assets/Closed-Status .png";
+        const statusImage = card.status.toLowerCase() === "open" ? "./assets/Open-Status.png" : "./assets/Closed-Status.png";
             
 
         const cardDiv = document.createElement("div");
