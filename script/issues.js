@@ -1,14 +1,14 @@
-const allBtn = document.getElementById("allBtn");
-const openBtn = document.getElementById("openBtn");
+const allBtn   = document.getElementById("allBtn");
+const openBtn  = document.getElementById("openBtn");
 const closeBtn = document.getElementById("closeBtn");
+
 let currentTab = "all";
 
-
-
+// Active tab highlight function
 const activeTab = (tab) => {
     currentTab = tab;
 
-    // Reset all buttons
+    //initially all  white
     allBtn.classList.remove("bg-[#3b82f6]", "text-white");
     allBtn.classList.add("bg-[#e4e4e7]", "text-[#64748b]");
 
@@ -18,12 +18,21 @@ const activeTab = (tab) => {
     closeBtn.classList.remove("bg-[#3b82f6]", "text-white");
     closeBtn.classList.add("bg-[#e4e4e7]", "text-[#64748b]");
 
-    // Highlight active
-    if(tab === "all") allBtn.classList.add("bg-[#3b82f6]", "text-white");
-    if(tab === "open") openBtn.classList.add("bg-[#3b82f6]", "text-white");
-    if(tab === "closed") closeBtn.classList.add("bg-[#3b82f6]", "text-white");
+    // add blue
+    if (tab === "all") {
+        allBtn.classList.remove("bg-[#e4e4e7]", "text-[#64748b]");
+        allBtn.classList.add("bg-[#3b82f6]", "text-white");
+    } 
+    else if (tab === "open") {
+        openBtn.classList.remove("bg-[#e4e4e7]", "text-[#64748b]");
+        openBtn.classList.add("bg-[#3b82f6]", "text-white");
+    } 
+    else if (tab === "closed") {
+        closeBtn.classList.remove("bg-[#e4e4e7]", "text-[#64748b]");
+        closeBtn.classList.add("bg-[#3b82f6]", "text-white");
+    }
 
-    loadCards();
+    loadCards();  
 };
 
 // Event listeners
@@ -86,7 +95,7 @@ detailsDiv.innerHTML =`
             </div>
         </div>
           `;
-       // detailsContainer.appendChild(detailsDiv);
+        detailsContainer.appendChild(detailsDiv);
 document.getElementById("card_modal").showModal();
 }
 
@@ -128,7 +137,13 @@ const displayCards =(cards)=>{
         cardDiv.addEventListener("click", () => loadCardDetail(card.id));
         cardsContainer.appendChild(cardDiv);
     }
+    
 };
 
 
-loadCards();
+
+
+
+
+
+
