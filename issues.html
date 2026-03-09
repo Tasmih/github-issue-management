@@ -36,16 +36,16 @@
         </div>
             <div class="search w-full sm:w-auto">
                 <div class="join join-vertical sm:join-horizontal w-full">
-    <div>
-    <label class="input validator join-item">
-     
-      <input id="searchInput" type="text" placeholder="Search Issue" required />
-    </label>
-    <div class="validator-hint hidden">Search</div>
-  </div>
-  <button onclick="searchIssue()" class="btn btn-primary join-item w-full sm:w-auto">+ New Issue</button>
-</div></div>
-        </div>
+    <div class="flex flex-col sm:flex-row gap-2 w-full">
+  <label class="input validator">
+    <span><i class="fa-brands fa-sistrix"></i></span>
+    <input id="searchInput" type="text" placeholder="Search Issues..." required/>
+  </label>
+
+  <button onclick="searchIssue()" class="btn btn-primary w-full sm:w-auto">
+    + New Issue
+  </button>
+</div>
     </nav>
  </header>
  <!--All buttons here-->
@@ -88,14 +88,14 @@
  </main>
 
   <!-- Open the modal using ID.showModal() method -->
-  <!--<button class="btn" onclick="my_modal_5.showModal()">open modal</button>-->
+  
 
 <dialog id="card_modal" class="modal modal-bottom sm:modal-middle">
   <div class="modal-box p-3 sm:p-5">
    <div id="detailsContainer" class="overflow-y-auto max-h-[80vh]"></div>
     <div class="modal-action">
       <form method="dialog">
-        <!-- if there is a button in form, it will close the modal -->
+       
         <button class="btn">Close</button>
       </form>
     </div>

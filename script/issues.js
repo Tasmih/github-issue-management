@@ -47,7 +47,7 @@ const activeTab = (tab) => {
     loadCards();  
 };
 
-// Event listeners
+
 allBtn.addEventListener("click", () => activeTab("all"));
 openBtn.addEventListener("click", () => activeTab("open"));
 closeBtn.addEventListener("click", () => activeTab("closed"));
@@ -73,7 +73,7 @@ const loadCards = () => {
         })
         .catch(error => {
             console.error("Error fetching issues:", error);
-            hideLoading(); // hide spinner on error
+            hideLoading(); 
         });
 };
 
@@ -81,7 +81,7 @@ const loadCards = () => {
 //load every single card on modal
 const loadCardDetail =async(id)=>{
   const url=`https://phi-lab-server.vercel.app/api/v1/lab/issue/${id}`;
- // console.log(url);
+ 
   const res = await fetch(url);
   const details = await res.json();
   displayCardDetail(details.data);
@@ -123,7 +123,7 @@ detailsDiv.innerHTML =`
 
 const displayCards =(cards)=>{
     console.log(cards);
-    // get the container and empty it
+    
     const cardsContainer = document.getElementById("cardsContainer");
   cardsContainer.innerHTML ="";
 
@@ -136,7 +136,7 @@ const displayCards =(cards)=>{
 
         const cardDiv = document.createElement("div");
 
-  // set innerhtml
+
           cardDiv.innerHTML= `
             <div  class="space-y-3 p-3 shadow-sm h-full border-t-4 ${borderColor}">
                 <div class="flex justify-between items-center">
@@ -158,7 +158,7 @@ const displayCards =(cards)=>{
 
         cardDiv.addEventListener("click", () => loadCardDetail(card.id));
         cardsContainer.appendChild(cardDiv);
-         // count issue update
+        
        
     };
     document.getElementById("issueCount").innerText =
@@ -170,7 +170,7 @@ const displayCards =(cards)=>{
 // Search Issue
 const searchIssue = () => {
     const searchText = document.getElementById("searchInput").value;
-    showLoading(); // show spinner during search
+    showLoading(); //  spinner during search
 
     const url = `https://phi-lab-server.vercel.app/api/v1/lab/issues/search?q=${searchText}`;
 
@@ -182,11 +182,11 @@ const searchIssue = () => {
             // update issue count
             document.getElementById("textCount").innerText = json.data.length + " Issues";
 
-            hideLoading(); // hide spinner after search results
+            hideLoading(); // hide spinner 
         })
         .catch(error => {
             console.error("Error searching issues:", error);
-            hideLoading(); // hide spinner on error
+            hideLoading(); 
         });
 };
 
