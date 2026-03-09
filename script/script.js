@@ -16,7 +16,7 @@ const inputPassword = document.getElementById("input-password");
 
     // // 3-1 true :::>>> alert> issue page
    alert("Login success");
-    window.location.replace("./issues.html");
+    window.location.replace("/github-issue-management/issues.html");
  } else {
     // 3-1 false:::>> alert>return
     alert("Wrong username or password");
