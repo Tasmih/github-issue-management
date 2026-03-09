@@ -64,7 +64,7 @@ const loadCards = () => {
             if(currentTab === "closed") cards = cards.filter(c => c.status.toLowerCase() === "closed");
 
             // Update issue count
-            document.getElementById("textCount").innerText = cards.length + " Issues";
+            document.getElementById("issueCount").innerText = cards.length + " Issues";
 
             displayCards(cards);
             hideLoading();
