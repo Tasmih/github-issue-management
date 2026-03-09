@@ -1,6 +1,6 @@
 1️⃣ What is the difference between var, let, and const?
 
-In JavaScript, var, let, and const are used to declare variables. Even though they are similar, they are used in different ways.
+ Var, let, and const are used to declare variables in Java scripts. Even though they are similar, they are used in different ways.
 We can understand them using three things: scope, declaring and updating, and initialization.
 
 Scope
@@ -37,6 +37,7 @@ Const:
 const is different. We must give it a value when declaring because it cannot be changed later.
 
 2️⃣ What is the spread operator (...)?
+
 The spread operator ... is used to expand the elements of an array or object. It helps us copy, combine, or add elements easily.
 
 let fruits = ["Mango", "Banana"];
@@ -60,12 +61,13 @@ forEach()
 The forEach() method runs a function on each element. It performs an action like printing or updating, but does not return a new array.
 
 4️⃣ What is an arrow function?
-Arrow Function is the shorter  and simpler way to write functions in JavaScript.
+
+Arrow Function is the shorter and simpler way to write functions in JavaScript.
 
 const greet = () => "Hello, world!";
 
 5️⃣ What are template literals?
-Template literals are used to create strings easily in JavaScript.They use backticks   instead of quotes.
 
+Template literals are used to create strings easily in JavaScript.They use backticks  ``  instead of quotes "".
 We  can insert variables inside the string using ${}.
 
