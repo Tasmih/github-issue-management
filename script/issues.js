@@ -4,6 +4,18 @@ const closeBtn = document.getElementById("closeBtn");
 
 let currentTab = "all";
 
+
+const showLoading = () => {
+    document.getElementById("loadingSpinner").classList.remove("hidden");
+    document.getElementById("cardsContainer").classList.add("hidden");
+};
+
+const hideLoading = () => {
+    document.getElementById("loadingSpinner").classList.add("hidden");
+    document.getElementById("cardsContainer").classList.remove("hidden");
+};
+
+
 // Active tab highlight function
 const activeTab = (tab) => {
     currentTab = tab;
@@ -41,18 +53,28 @@ openBtn.addEventListener("click", () => activeTab("open"));
 closeBtn.addEventListener("click", () => activeTab("closed"));
 
 const loadCards = () => {
+    showLoading(); // show spinner at start
+
     fetch("https://phi-lab-server.vercel.app/api/v1/lab/issues")
         .then(res => res.json())
         .then(json => {
             let cards = json.data;
 
-            // Filter based on tab
-           if(currentTab === "open") cards = cards.filter(c => c.status.toLowerCase() === "open");
+            if(currentTab === "open") cards = cards.filter(c => c.status.toLowerCase() === "open");
             if(currentTab === "closed") cards = cards.filter(c => c.status.toLowerCase() === "closed");
 
+            // Update issue count
+            document.getElementById("textCount").innerText = cards.length + " Issues";
+
             displayCards(cards);
+            hideLoading();
+
+            
         })
-        .catch(error => console.error("Error fetching issues:", error));
+        .catch(error => {
+            console.error("Error fetching issues:", error);
+            hideLoading(); // hide spinner on error
+        });
 };
 
 
@@ -81,8 +103,8 @@ detailsDiv.innerHTML =`
            <div class="badge badge-soft badge-secondary ">${card.priority}</div>
 
         </div>
-        <h3 class="text-[#1f2937] font-semibold text-[14px]">${card.title}</h3>
-        <p class="text-[#64748b] text-[12px]">${card.description}</p>  
+        <h3 class="text-[#1f2937] font-semibold sm:text-[16px] text-[14px]">${card.title}</h3>
+        <p class="text-[#64748b] text-[12px] sm:text-[14px]">${card.description}</p>  
         <!--2 badges-->
         <div class=" flex gap-2">
             <div class="badge badge-soft badge-secondary"><img src="./assets/BugDroid.png" alt=""> BUG</div>
@@ -95,8 +117,8 @@ detailsDiv.innerHTML =`
             </div>
         </div>
           `;
-        detailsContainer.appendChild(detailsDiv);
-document.getElementById("card_modal").showModal();
+       
+        document.getElementById("card_modal").showModal();
 }
 
 const displayCards =(cards)=>{
@@ -116,13 +138,13 @@ const displayCards =(cards)=>{
 
   // set innerhtml
           cardDiv.innerHTML= `
-            <div id="card" class="space-y-3 p-3 shadow-sm h-full border-t-4 ${borderColor}">
+            <div  class="space-y-3 p-3 shadow-sm h-full border-t-4 ${borderColor}">
                 <div class="flex justify-between items-center">
                     <img src="${statusImage}" alt="${card.status}" class="w-6 h-6">
                     <div class="badge badge-soft badge-secondary">${card.priority}</div>
                 </div>
-                <h3 class="text-[#1f2937] font-semibold text-[14px]">${card.title}</h3>
-                <p class="text-[#64748b] text-[12px]">${card.description}</p>  
+                <h3 class="text-[#1f2937] font-semibold text-[14px] sm:text-[16px]">${card.title}</h3>
+                <p class="text-[#64748b] text-[12px] sm:text-[14px]">${card.description}</p>  
                 <div class="flex gap-2">
                     <div class="badge badge-soft badge-secondary"><img src="./assets/BugDroid.png" alt=""> BUG</div>
                     <div class="badge badge-soft badge-warning text-[12px]"><img src="./assets/Lifebuoy.png" alt=""> HELP WANTED</div>
@@ -136,14 +158,40 @@ const displayCards =(cards)=>{
 
         cardDiv.addEventListener("click", () => loadCardDetail(card.id));
         cardsContainer.appendChild(cardDiv);
-    }
-    
+         // count issue update
+       
+    };
+    document.getElementById("issueCount").innerText =
+        cards.length + " Issues";
 };
 
 
 
+// Search Issue
+const searchIssue = () => {
+    const searchText = document.getElementById("searchInput").value;
+    showLoading(); // show spinner during search
+
+    const url = `https://phi-lab-server.vercel.app/api/v1/lab/issues/search?q=${searchText}`;
+
+    fetch(url)
+        .then(res => res.json())
+        .then((json) => {
+            displayCards(json.data);
+
+            // update issue count
+            document.getElementById("textCount").innerText = json.data.length + " Issues";
+
+            hideLoading(); // hide spinner after search results
+        })
+        .catch(error => {
+            console.error("Error searching issues:", error);
+            hideLoading(); // hide spinner on error
+        });
+};
 
 
 
+loadCards();
 
 
